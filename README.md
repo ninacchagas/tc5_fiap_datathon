@@ -6,8 +6,7 @@ Este projeto é uma aplicação que permite buscar os currículos mais aderentes
 Busca apenas currículos que já tiveram prospects para agilizar o processo de deleção do candidato, isto é, mandar mensagens para quem tem maior possibilidade de passar neste processo seletivo e preencher a vaga mais rapidamente.
 
 ## Estrutura do Projeto
-bash ```
-app/
+bash ```app/
   models/
     curriculos_emb_reduzidos.npz  # Embeddings PCA
     pca_transformer.joblib        # Transformador PCA
@@ -21,8 +20,8 @@ src/
   padroniza_curriculo.py # Contém a função que realiza o tratamento dos curriculos para treinamento
 Dockerfile
 README.md
-requirements.txt
-```
+requirements.txt```
+
 ## Instalação
 
 1. Clone o repositório:
