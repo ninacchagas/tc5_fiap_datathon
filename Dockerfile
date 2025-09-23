@@ -1,21 +1,26 @@
+# imagem base com Python 3.12
 FROM python:3.12-slim
 
-WORKDIR /project_root
+# define diretório de trabalho
+WORKDIR /app
 
-RUN apt-get update && apt-get install -y \
-    gcc \
-    g++ \
-    unixodbc-dev \
-    build-essential \
-    && rm -rf /var/lib/apt/lists/*
-
-RUN pip install --upgrade pip
-
+# copia requirements se houver
 COPY requirements.txt .
-RUN pip install --no-cache-dir -r requirements.txt
 
+# instala dependências
+RUN pip install --no-cache-dir --upgrade pip \
+    && pip install --no-cache-dir -r requirements.txt
+
+# copia o restante do código
 COPY . .
 
-EXPOSE 8000
+# expõe a porta do Streamlit
+EXPOSE 8501
 
-CMD ["python", "-m", "uvicorn", "app.app:app", "--host", "0.0.0.0", "--port", "8000"]
+# define variáveis de ambiente para rodar Streamlit sem warnings
+ENV STREAMLIT_SERVER_HEADLESS=true \
+    STREAMLIT_SERVER_ENABLE_CORS=false \
+    STREAMLIT_SERVER_PORT=8501
+
+# comando para iniciar o app
+CMD ["streamlit", "run", "app/main.py"]
