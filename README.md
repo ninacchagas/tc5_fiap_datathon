@@ -7,19 +7,32 @@ Busca apenas currículos que já tiveram prospects para agilizar o processo de d
 
 ## Estrutura do Projeto
 ```app/```
+
    ```models/```
+   
     ```curriculos_emb_reduzidos.npz  # Embeddings PCA```
     ```pca_transformer.joblib        # Transformador PCA```
+    
   ```app.py                # API com FastAPI```
+  
   ```main.py               # App Streamlit```
+  
 ```data/```
+
   ```dados_prospectados.csv # CSV com currículos prospectados```
+  
 ```src/```
+
   ```data_prep.ipynb        # Arquivo com a preparação dos dados```
+  
   ```modelo.py              # Modelo ```
+  
   ```padroniza_curriculo.py # Contém a função que realiza o tratamento dos curriculos para treinamento```
+  
 ```Dockerfile```
+
 ```README.md```
+
 ```requirements.txt```
 
 ## Instalação
