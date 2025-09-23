@@ -5,6 +5,31 @@
 Este projeto é uma aplicação que permite buscar os currículos mais aderentes a uma descrição de vaga usando embeddings de texto e transformações PCA para reduzir dimensionalidade. 
 Busca apenas currículos que já tiveram prospects para agilizar o processo de deleção do candidato, isto é, mandar mensagens para quem tem maior possibilidade de passar neste processo seletivo e preencher a vaga mais rapidamente.
 
+## Ferramentas Utilizadas
+
+### Linguagens
+- **Python**: linguagem principal do projeto, usada para processamento de dados, treinamento de modelo e construção da API.
+
+### Bibliotecas Python
+- **pandas** e **numpy**: manipulação e análise de dados.
+- **unidecode**: limpeza e normalização de textos.
+- **nltk**: processamento de linguagem natural (tokenização, stopwords, lematização).
+- **scikit-learn**: pré-processamento de dados, PCA e métricas.
+- **joblib**: serialização de modelos e objetos grandes.
+- **sentence-transformers**: geração de embeddings para textos.
+- **fastapi**: construção da API para inferência do modelo.
+- **uvicorn**: servidor ASGI para rodar a API FastAPI.
+- **pydantic**: validação de dados da API.
+- **streamlit**: interface web para interação com o modelo.
+
+### Ferramentas de Desenvolvimento
+- **Git**: controle de versão do código.
+- **Docker**: containerização da aplicação para deploy consistente.
+
+### Estrutura de Dados
+- **.csv**: arquivos de dados brutos (currículos prospectados).
+- **.npz / .joblib**: arquivos de modelos e embeddings serializados para uso na API.
+
 ## Estrutura do Projeto
 ```app/```
 
