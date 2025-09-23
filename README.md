@@ -110,5 +110,3 @@ Para rodar via Docker:
 
 - O carregamento do modelo SentenceTransformer pode demorar na primeira execução.
 - As embeddings e PCA já estão pré-computadas para acelerar a busca.
-- O carregamento do modelo SentenceTransformer pode demorar na primeira execução.
-- As embeddings e PCA já estão pré-computadas para acelerar a busca.
