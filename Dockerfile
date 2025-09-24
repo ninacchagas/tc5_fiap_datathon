@@ -1,26 +1,28 @@
-# imagem base com Python 3.12
 FROM python:3.12-slim
 
-# define diretório de trabalho
-WORKDIR /app
+# Define o diretório de trabalho dentro do container
+WORKDIR /tc5_fiap_datathon
 
-# copia requirements se houver
+# Instala dependências do sistema necessárias para algumas libs do Python
+RUN apt-get update && apt-get install -y \
+    gcc \
+    g++ \
+    unixodbc-dev \
+    build-essential \
+    && rm -rf /var/lib/apt/lists/*
+
+# Atualiza pip
+RUN pip install --upgrade pip
+
+# Copia o arquivo de dependências e instala
 COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
 
-# instala dependências
-RUN pip install --no-cache-dir --upgrade pip \
-    && pip install --no-cache-dir -r requirements.txt
-
-# copia o restante do código
+# Copia todo o código para dentro do container
 COPY . .
 
-# expõe a porta do Streamlit
-EXPOSE 8501
+# Expõe a porta da API
+EXPOSE 8000
 
-# define variáveis de ambiente para rodar Streamlit sem warnings
-ENV STREAMLIT_SERVER_HEADLESS=true \
-    STREAMLIT_SERVER_ENABLE_CORS=false \
-    STREAMLIT_SERVER_PORT=8501
-
-# comando para iniciar o app
-CMD ["streamlit", "run", "app/main.py"]
+# Comando para rodar a API FastAPI
+CMD ["uvicorn", "app.app:app", "--host", "0.0.0.0", "--port", "8000"]
